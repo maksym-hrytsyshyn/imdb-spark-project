@@ -5,6 +5,9 @@ from pyspark.sql.types import *
 def get_spark():
     return SparkSession.builder \
         .appName("IMDB Project") \
+        .config("spark.sql.shuffle.partitions", "4") \
+        .config("spark.driver.memory", "4g") \
+        .config("spark.executor.memory", "4g") \
         .getOrCreate()
 
 

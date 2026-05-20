@@ -58,9 +58,9 @@ def analyze_and_check_nulls(df: DataFrame, name: str):
 
 def check_duplicates(df: DataFrame, name: str):
     total = df.count()
-    distinct = df.distinct().count()
+    distinct = df.select("tconst").distinct().count()
     print(f"\n=== Duplicates in {name} ===")
-    print(f"Total: {total}, Distinct: {distinct}, Duplicates: {total - distinct}")
+    print(f"Total: {total}, Distinct by tconst: {distinct}, Duplicates: {total - distinct}")
 
 
 def handle_nulls(title_basics: DataFrame) -> DataFrame:

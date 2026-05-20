@@ -1,10 +1,12 @@
-FROM python:3.11
+FROM python:3.11-slim
 
 RUN apt-get update && apt-get install -y \
-    default-jdk \
+    openjdk-21-jre-headless \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pip install pyspark
+ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk-arm64
+
+RUN pip install pyspark matplotlib seaborn squarify
 
 WORKDIR /app
 
